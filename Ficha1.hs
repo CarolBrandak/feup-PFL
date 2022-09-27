@@ -31,8 +31,13 @@ binom :: Integer -> Integer -> Integer
 binom n k = div (product [1 .. n]) ((product [1 .. k]) * product [1 .. (n - k)])
 
 --b)
---binom' :: Integer -> Integer -> Integer
---binom' n k =
+fact :: Integer -> Integer
+fact n = product [1..n]
+
+binom' :: Integer -> Integer -> Integer
+binom' n k
+    | k < n - k = div (product [n-k+1 .. n]) (fact k)
+    | otherwise = div (product [k+1 .. n]) (fact (n-k))
 
 --1.6
 raizes :: Float -> Float -> Float -> (Float, Float)
@@ -79,6 +84,42 @@ classifica' p a
     | otherwise = "obsesidade"
   where l= p / (a^2)
 
+--1.11
+--a)
+max3, min3 :: Ord a => a -> a -> a -> a
+max3 a b c | a > b && b > c = a
+           | b > a && a > c = b
+           | otherwise = c
+min3 a b c | a <= b && b <= c = a
+           | b <= a && a <= c = b
+           | otherwise = c
+
+--b)           
+max3', min3' :: Ord a => a -> a -> a -> a
+max3' a b = max (max a b)
+min3' a b = max (max a b)
+
+--1.12
+xor :: Bool -> Bool -> Bool
+xor False False = False 
+xor True True = False
+xor True False = True
+xor False True = True
+
+xor':: Bool -> Bool -> Bool
+xor' x y 
+  | x == y = False
+  | otherwise = True
+
+--1.13
+safetail :: [a] -> [a] 
+safetail [] = []
+safetail xs = tail xs
+
+safetail' :: [a] -> [a]
+safetail' xs = case xs of
+                [] -> []
+                xs -> tail xs
 
 --1.14
 --a)
@@ -93,6 +134,17 @@ curta' [] = True
 curta' [_] = True
 curta' [_, _] = True
 curta' _ = False
+
+--1.15
+--a)
+median :: Ord a => a -> a -> a -> a
+median a b c | b > a && a > c || (b < a && a < c) = a
+             | a > b && b > c || (a < b && b < c) = b
+             | otherwise = c
+
+--b)
+median' :: (Num a, Ord a) => a -> a -> a -> a
+median' a b c = a + b + c - max3 a b c - min3 a b c 
 
 --1.16
 converte100 :: (Integral a) => a -> String
@@ -157,9 +209,9 @@ converte n
                                 then ""
                                 else (if (n1000 <= 100 || mod n1000 100 == 0) then " e " else " ") ++ converte1000 n1000
 
---IN-14
-fact :: Int -> Int
-fact 0 = 1
-fact n
-  | n > 0 = n * fact (n -1)
+-- IN-14
+fact' :: Int -> Int
+fact' 0 = 1
+fact' n
+  | n > 0 = n * fact' (n -1)
   | otherwise = error "argumento negativo"
