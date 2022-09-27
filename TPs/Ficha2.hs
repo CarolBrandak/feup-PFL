@@ -80,7 +80,6 @@ mersennes :: [Int]
 mersennes = [fromIntegral x |n<-[0..30],let x=2^n-1, primo x]
 
 --2.14
-
 fact :: Integer -> Integer
 fact n = product [1..n]
 
@@ -89,4 +88,5 @@ binom n k
     | k < n - k = div (product [n-k+1 .. n]) (fact k)
     | otherwise = div (product [k+1 .. n]) (fact (n-k))
 
-
+pascal :: Integer -> [[Integer]]
+pascal n = [[x | i<-[0..k], let x= binom k i ] | k<-[0..n] ]
