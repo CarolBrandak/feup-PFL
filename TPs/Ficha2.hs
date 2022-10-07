@@ -1,3 +1,4 @@
+{-# OPTIONS_GHC -Wno-incomplete-patterns #-}
 import Data.Char
 
 --2.1
@@ -132,10 +133,10 @@ pascal :: Integer -> [[Integer]]
 pascal n = [[x | i<-[0..k], let x= binom k i ] | k<-[0..n] ]
 
 --2.15
-cifraLetra :: Int -> Char -> Char
+cifraLetra :: Int -> Data.Char.Char -> Data.Char.Char
 cifraLetra k x
-    | isLetter x && isUpper x = chr (mod (ord x +k - ord 'A' ) 26 + ord 'A' )
-    | isLetter x && isLower x = chr (mod (ord x +k - ord 'a' ) 26 + ord 'a' )
+    | Data.Char.isLetter x && Data.Char.isUpper x = Data.Char.chr (mod (Data.Char.ord x +k - Data.Char.ord 'A' ) 26 + Data.Char.ord 'A' )
+    | Data.Char.isLetter x && Data.Char.isLower x = Data.Char.chr (mod (Data.Char.ord x +k - Data.Char.ord 'a' ) 26 + Data.Char.ord 'a' )
     | otherwise  = x
 
 cifrar :: Int -> String -> String
@@ -156,9 +157,9 @@ forte :: String -> Bool
 forte xs = (length xs >= 8) && letraMaiuscula xs && letraMinuscula xs  && algarismo xs
     where
         peloMenosUm criterio lista = length [x | x <- lista ,criterio x] > 0
-        letraMaiuscula = peloMenosUm isUpper
-        letraMinuscula = peloMenosUm isLower
-        algarismo = peloMenosUm isDigit
+        letraMaiuscula = peloMenosUm Data.Char.isUpper
+        letraMinuscula = peloMenosUm Data.Char.isLower
+        algarismo = peloMenosUm Data.Char.isDigit
 
 --2.18
 --a)
