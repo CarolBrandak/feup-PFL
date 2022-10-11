@@ -26,12 +26,24 @@ minimum' :: Ord a => [a] -> a
 minimum' = foldr1 (\x acc -> if x < acc then x else acc)
 
 foldl1' :: (a -> a -> a) -> [a] -> a
-foldl1' f x= foldl f (head x) (tail x)
+foldl1' f x = foldl f (head x) (tail x)
 
 foldr1' :: (a -> a -> a) -> [a] -> a
-foldr1' f x= foldr f (last x) (init x)
+foldr1' f x = foldr f (last x) (init x)
+
+--3.6
+mdc :: Int -> Int -> Int
+mdc a b = fst (until (\(a,b) -> b == 0) (\(a,b) -> (b,a`mod`b)) (a,b))
 
 --3.7
+--a)
+(+++) :: [a] -> [a] -> [a]
+xs +++ ys = foldr (:) ys xs
+
+--b)
+concat' :: [[a]] -> [a]
+concat' = foldr (++) [] 
+
 --c)
 reverseRight :: [a] -> [a]
 reverseRight = foldr (\x acc -> acc ++ [x]) []
@@ -39,3 +51,11 @@ reverseRight = foldr (\x acc -> acc ++ [x]) []
 --d)
 reverseLeft :: [a] -> [a]
 reverseLeft = foldl (\acc x -> x : acc) []
+
+--e) 
+elem' :: Eq a => a -> [a] -> Bool
+elem' x = any (x ==)
+
+--3.8
+
+
