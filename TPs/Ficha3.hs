@@ -57,5 +57,18 @@ elem' :: Eq a => a -> [a] -> Bool
 elem' x = any (x ==)
 
 --3.8
+--a)
+palavras :: String -> [String]
+palavras [] = []
+palavras (' ':xs) = palavras xs
+palavras xs = [y | y <- word] : palavras rest
+    where word = takeWhile (' ' /=) xs 
+          rest = dropWhile (' ' /=) xs
 
+--b)
+despalavras :: [String] -> String
+despalavras [] = []
+despalavras xs = foldr1 (\x y -> x ++ " " ++ y) xs 
+
+--3.9
 
