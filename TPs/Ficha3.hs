@@ -71,4 +71,7 @@ despalavras [] = []
 despalavras xs = foldr1 (\x y -> x ++ " " ++ y) xs 
 
 --3.9
+myscanl :: (b -> a -> b) -> b -> [a] -> [b]
+myscanl f z [] = [z]
+myscanl f z (x:xs) = z: myscanl f (f z x) xs
 
