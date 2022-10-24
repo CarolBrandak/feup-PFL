@@ -46,6 +46,8 @@ merge l1 l2 = sort l
 
 --5
 lengthZip :: [a] -> [(Int, a)]
-lengthZip val = zip (reverse (take (length val) [1 ..])) val
-
+lengthZip z = zip l d
+    where l = [v | v <- [length z, length z-1 .. 0]]
+          d = [x | x <- z]
+          
 --6
