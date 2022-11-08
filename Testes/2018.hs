@@ -6,7 +6,7 @@ a) [[1,2,3], [], [4], [5]]
 b) 5
 c) [8, 6, 4, 2, 0]
 d) 9
-e) [(1, 1), (1, 2), (1, 3), (1, 4), (2, 2), (2, 3), (2, 4)]
+e) [(1, 1), (2, 1), (3, 1), (4, 1), (2, 2), (3, 2), (4, 2)]
 f) [2,4,8,16,32]
 g) [2^x-1 | x<-[1..10]]
 h) 15
@@ -35,7 +35,7 @@ niguais n x
     | otherwise = x:niguais (n-1) x
 
 niguais' :: Int -> a -> [a]
-niguais' n x 
+niguais' n x
     | n <= 0 = []
     | otherwise = [ x | z<-[1..n]]
 
@@ -46,8 +46,32 @@ merge l1 l2 = sort l
 
 --5
 lengthZip :: [a] -> [(Int, a)]
-lengthZip z = zip l d
-    where l = [v | v <- [length z, length z-1 .. 0]]
-          d = [x | x <- z]
-          
+lengthZip z = zip l z
+    where l = [length z, length z-1 .. 0]
+    
+
+
 --6
+p :: a -> b -> (a,b)
+p x y = (x, y)
+
+niguaisRec :: Int -> a -> [a]
+niguaisRec n a
+    | n <= 0 = []
+    | otherwise = a : niguaisRec (n-1) a
+
+niguaisComp :: Int -> a -> [a]
+niguaisComp n a 
+    | n <= 0 = []
+    | otherwise = [a | x <-[1..n]]
+
+merge' :: Ord a => [a] -> [a] -> [a]
+merge' [] (y:ys) = y : merge' [] ys
+merge' (y:ys) [] = y : merge' [] ys
+merge' [] [] = []
+merge' (x:xs) (y:ys)
+    | x < y = x : merge' xs (y:ys)
+    | otherwise = y : merge' (x:xs) ys
+
+lengthZip' :: [a] -> [(Int, a)]
+lengthZip' xs = zip [length xs, length xs -1 .. 1] xs
