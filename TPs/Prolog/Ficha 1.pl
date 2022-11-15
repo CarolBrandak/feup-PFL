@@ -101,6 +101,11 @@ is_married(X,Y,Year):-
     divorced(X,Y,Year2),
     Year =< Year2.
 
+% 4.
+traduz(1, 'Integer Overflow').
+traduz(2, 'Divisao por zero').
+traduz(3, 'ID Desconhecido').
+
 % 6.
 % a)
 
