@@ -1,20 +1,32 @@
-/*
-PFL - Sheet TP7 - Beginning of exercise 1
-By: Gonçalo Leão
-*/
-
-%%% a
+% 1.
+% a)
 male(frank).
 male(jay).
 male(javier).
 male(merle).
-% ...
+male(phil).
+male(mitchell).
+male(cameron). % Example of a homosexual relationship. This affects how we define siblings!
+male(joe).
+male(manny).
+male(bo).
+male(dylan).
+male(luke).
+male(rexford).
+male(calhoun).
+male(george).
 
 female(grace).
 female(dede).
 female(gloria).
 female(barb).
-% ...
+female(claire).
+female(pameron).
+female(haley).
+female(alex).
+female(lily).
+female(poppy).
+
 
 
 parent(grace,phil).
