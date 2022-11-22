@@ -57,3 +57,12 @@ invert2_aux([X|Xs], Acc, Rev):-
 
 %7
 %b)
+list_member(X, L):-
+    append(_, [X|_], L).
+
+%d)
+list_nth(N, L, X):-
+    length(Prefix, N),
+    append(Prefix, [X|_], L).
+    
+
