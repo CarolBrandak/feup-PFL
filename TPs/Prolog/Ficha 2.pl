@@ -38,3 +38,22 @@ Tail=[3,4]? yes
 l)One=leic,
 Rest=[Two|Tail]?
 */
+
+%6
+%a)
+
+%invert(?L,-Rev)
+invert([], []).
+invert([X|Xs], Rev):-
+    invert(Xs,XsRev),
+    append(XsRev,[X], Rev).
+
+invert2(L,Rev):-
+    invert2_aux(L,[],Rev).
+
+invert2_aux([], Acc, Acc).
+invert2_aux([X|Xs], Acc, Rev):-
+    invert2_aux(Xs, [X|Acc], Rev).
+
+%7
+%b)
