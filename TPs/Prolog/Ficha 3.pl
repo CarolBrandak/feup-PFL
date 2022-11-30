@@ -9,6 +9,12 @@ c) X=1 e Y=1
    X=1 e Y=2
 */
 
+/*2) 
+a) one; two; three; five.
+b) one;
+c) one, one; one, two; one, three;
+*/
+
 /*3.
 immature(X) Vermelho
 adult(X) Verde
