@@ -9,7 +9,7 @@ create_board([H|T], N, Size):-
 
 %create_row(-List, +N)
 create_row([], 0).
-create_row([1|Row], N):-
+create_row([''|Row], N):-
   N > 0,
   N1 is N-1,
   create_row(Row, N1).
