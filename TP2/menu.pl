@@ -41,8 +41,8 @@ game_name:-
  333333333333333            666666666       99999999
  */
 
-%select_size(-Size)
-select_size(Size):-
+%initial_size(-Size)
+initial_size(Size):-
     print('Insert Board Size: '),
     read(Size),
     error_size(Size),
@@ -57,4 +57,7 @@ select_mode(Mode):-
     write('2 - Player vs Computer'), nl,
     write('3 - Computer vs Computer'), nl,
     read(Mode),
-    error_mode(Mode).
+    error_mode(Mode),
+    Mode >= 1,
+    Mode =< 3,
+    nl, nl.
