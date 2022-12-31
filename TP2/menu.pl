@@ -43,21 +43,44 @@ game_name:-
 
 %initial_size(-Size)
 initial_size(Size):-
-    print('Insert Board Size: '),
-    read(Size),
+    repeat,
+        print('Insert Board Size: '),
+        read(Size),
     error_size(Size),
-    Size >= 6,
-    Size =< 9,
+    !,
     nl,nl.
 
 %select_mode(-Mode)
 select_mode(Mode):-
-    print('\nSelect game mode: \n\n'),
-    write('1 - Player vs Player'), nl,
-    write('2 - Player vs Computer'), nl,
-    write('3 - Computer vs Computer'), nl,
-    read(Mode),
+    repeat,
+        print('\nSelect game mode: \n\n'),
+        write('1 - Player vs Player'), nl,
+        write('2 - Player vs Computer'), nl,
+        write('3 - Computer vs Computer'), nl,
+        read(Mode),
     error_mode(Mode),
-    Mode >= 1,
-    Mode =< 3,
+    !,
+    nl, nl.
+
+%choose_ai_level(+Mode, [-Level1, -Level2])
+choose_ai_level(1, [0, 0]).
+choose_ai_level(2, [Level1, 0]):-
+    repeat,
+        print('\nSelect AI Level from 1 to 2: \n\n'),
+        read(Level1),
+    error_level(Level1),
+    !,
+    nl, nl.
+
+choose_ai_level(3, [Level1, Level2]):-
+    repeat,
+        print('\nSelect AI 1 Level from 1 to 2: \n\n'),
+        read(Level1),
+    error_level(Level1),
+    !,
+    repeat,
+        print('\nSelect AI 2 Level from 1 to 2: \n\n'),
+        read(Level2),
+    error_level(Level2),
+    !,
     nl, nl.

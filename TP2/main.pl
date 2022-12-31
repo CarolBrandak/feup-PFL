@@ -1,5 +1,3 @@
-:- include('display.pl').
-
 :- include('menu.pl').
 
 :- include('board.pl').
@@ -9,20 +7,38 @@
 play:-
     game_name,
     initial_size(Size),
-    select_mode(_),
+    select_mode(Mode),
+    choose_ai_level(Mode, CPUs),
     create_board(Board, Size, Size), nl,
-    write('Board:'),nl,
-    print(Board), nl, nl,
-    write('Valid Moves:'),nl,
-    valid_moves(Board, ValidMoves),
-    print(ValidMoves), nl,nl,
-    game_loop(Board, 0, 0).
+    %write('Board:'),nl,
+    %print(Board), nl, nl,
+    %write('Valid Moves:'),nl,
+    %valid_moves(Board, ValidMoves),
+    %print(ValidMoves), nl,nl,
+    display_game(Board),
+    game_loop(Board, CPUs, 0, 0, 0, 0), nl,
+    write('\nFinished execution\n').
 
-%game_loop(+Board, +Turn, +State)
-game_loop(_, _, 2).
-game_loop(Board, Turn, State):-
+%game_loop(+Board, +CPUs, +Turn, +State, +Score1, +Score2)
+game_loop(_, _, _, 1, Score1, Score2):-
+    game_over(Score1, Score2),
+    write('\nGame Over\n').
+game_loop(Board, CPUs, Turn, 0, Score1, Score2):-
     PlayerTurn is Turn + 1,
     print('Player '), print(PlayerTurn), print(' Turn'), nl,
-    print('Select a coordinate to play (Ex: 1 1)'), nl, nl,
-    display_game(Board).
+    next_move(Turn, Board, CPUs, Move, NewBoard),
+    %write('Board:'),nl,
+    %print(NewBoard), nl, nl,
+    %write('Valid Moves:'),nl,
+    %valid_moves(NewBoard, ValidMoves),
+    %print(ValidMoves), nl,nl,
+    score(Turn, NewBoard, Move, Score1, Score2, NewScore1, NewScore2),
+    write('\nPlayer 1 Score:'),nl,
+    print(NewScore1), nl, nl,
+    write('Player 2 Score:'),nl,
+    print(NewScore2), nl, nl,
+    display_game(NewBoard),
+    check_game_over(NewBoard, NewState),
+    change_turn(Turn, NewTurn),
+    game_loop(NewBoard, CPUs, NewTurn, NewState, NewScore1, NewScore2).
     
