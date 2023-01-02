@@ -3,46 +3,38 @@ score(0, Board, [RowNumber,ColumnNumber], Score, Score2, NewScore, Score2):-
     length(Board, Size),
     NSize is Size - 1,
     calculate_row(Board, RowNumber, 0, NSize, 0, NPiecesRow),
-    %write('\nNPiecesRow  '), write(NPiecesRow),nl,
     calc_score(NPiecesRow, Score, SumScore1),
     calculate_column(Board, ColumnNumber, 0, NSize, 0, NPiecesCol),
-    %write('\nNPiecesCol  '), write(NPiecesCol),nl,
     calc_score(NPiecesCol, SumScore1, SumScore2),
     A is min(RowNumber,ColumnNumber),
     RowN is RowNumber - A,
     ColN is ColumnNumber - A,
     calculate_dia1(Board, RowN, ColN, NSize, 0, NPiecesDia1),
-    %write('\nNPiecesDia1  '), write(NPiecesDia1),nl,
     calc_score(NPiecesDia1, SumScore2, SumScore3),
     ColInv is NSize - ColumnNumber,
     B is min(RowNumber, ColInv),
     RowNInv is RowNumber - B,
     ColNInv is ColumnNumber + B,
     calculate_dia2(Board, RowNInv, ColNInv, NSize, 0, NPiecesDia2),
-    %write('\nNPiecesDia2  '), write(NPiecesDia2),nl,
     calc_score(NPiecesDia2, SumScore3, NewScore).
 
 score(1, Board, [RowNumber,ColumnNumber], Score1, Score, Score1, NewScore):-
     length(Board, Size),
     NSize is Size - 1,
     calculate_row(Board, RowNumber, 0, NSize, 0, NPiecesRow),
-    %write('\nNPiecesRow  '), write(NPiecesRow),nl,
     calc_score(NPiecesRow, Score, SumScore1),
     calculate_column(Board, ColumnNumber, 0, NSize, 0, NPiecesCol),
-    %write('\nNPiecesCol  '), write(NPiecesCol),nl,
     calc_score(NPiecesCol, SumScore1, SumScore2),
     A is min(RowNumber,ColumnNumber),
     RowN is RowNumber - A,
     ColN is ColumnNumber - A,
     calculate_dia1(Board, RowN, ColN, NSize, 0, NPiecesDia1),
-    %write('\nNPiecesDia1  '), write(NPiecesDia1),nl,
     calc_score(NPiecesDia1, SumScore2, SumScore3),
     ColInv is NSize - ColumnNumber,
     B is min(RowNumber, ColInv),
     RowNInv is RowNumber - B,
     ColNInv is ColumnNumber + B,
     calculate_dia2(Board, RowNInv, ColNInv, NSize, 0, NPiecesDia2),
-    %write('\nNPiecesDia2  '), write(NPiecesDia2),nl,
     calc_score(NPiecesDia2, SumScore3, NewScore).
 
 %calculate_row(+Board, +RowNumber, +N, +Size, +NPieces, -NewNPieces)
@@ -92,8 +84,6 @@ calculate_dia1(Board, N, ColNumber, N, NPieces, NewNPieces):-
 calculate_dia1(Board, N, ColNumber, N, NPieces, NPieces):-
     get_element(Board, N, ColNumber, '').
 
-
-
 calculate_dia1(Board, RowNumber, ColNumber, Size, NPieces, NewNPieces):-
     get_element(Board, RowNumber, ColNumber, 1),
     NPiecesSum is NPieces + 1,
@@ -118,8 +108,6 @@ calculate_dia2(Board, N, ColNumber, N, NPieces, NewNPieces):-
     NewNPieces is NPieces + 1.
 calculate_dia2(Board, N, ColNumber, N, NPieces, NPieces):-
     get_element(Board, N, ColNumber, '').
-
-
 
 calculate_dia2(Board, RowNumber, ColNumber, Size, NPieces, NewNPieces):-
     get_element(Board, RowNumber, ColNumber, 1),
