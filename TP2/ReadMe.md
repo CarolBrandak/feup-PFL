@@ -83,5 +83,43 @@ O programa é inciado por play/0, demonstrando em seguida um menu, este pedindo 
 
 ![final](https://user-images.githubusercontent.com/80838413/210233611-7d07c1c5-5f5e-4b49-b997-7228f8fb8a05.png)
 
+#### Execução de Jogadas:
 
+A jogada é executada através do predicado move/3 que recebe o Estado do Jogo atual, um Move em forma de [linha, coluna] e devolve o novo Estado de Jogo com o elemento do tabuleiro alterado nessa linha e coluna.
+Este predicado apenas é efetuado quando o move está na lista de jogadas possiveis.
 
+#### Lista de Jogadas Válidas:
+
+O predicado `valid_moves/2` devolve, através de ListOfMoves, a lista de jogadas válidas para avançar um dado GameState, recorrendo ao `findall/3`.
+
+#### Final do Jogo:
+
+A nossa função de verificação de final do jogo está dividida em duas: `check_game_over/2` que recebe o GameState e verifica se ha jogadas válidas e retorna um valor chamado State, que faz com que termine o ciclo de jogo; e `game_over/2` que recebe o score do Player 1 e o score do Player 2 e determina o vencedor.
+
+Foi necessário efetuar as operações deste modo pois pela lógica de jogo, não é possível determinar o vencedor/pontuação apenas com o Estado de Jogo final, mas sim é necessário calcular a pontuação depois de cada jogada.
+
+#### Avaliação do Tabuleiro:
+
+É possível verificar quais as jogadas que possuem maior valor através do predicado `value/3`. Esse predicado recebe o Estado de Jogo, a lista de jogadas válidas, e devolve uma lista de scores com índice equivalente ao índice da respetiva jogada. Essa lista é usada no predicado `max_score_list/6`, que retorna uma lista com os índices de maior score. Esta operação foi feita desta forma de modo a esperar um número diferente de jogadas com maior valor, e assim escolher uma dessas jogadas aleatóriamente.
+
+#### Jogada do Computador:
+
+O computador escolhe a sua jogada recorrendo ao predicado `choose_move/3`. Existem duas opções para o nível de dificuldade:
+
+1. Escolhe uma jogada válida aleatória recorrendo ao módulo random.
+2. Escolhe a jogada que dá maior pontuação no momento.
+
+### Conclução:
+
+Todos os objetivos principais do trabalho foram cumpridos e a sua execução foi bem conseguida, respeitando todas as regras.
+Para tornar o jogo mais dinâmico, foi implementada uma funcionalidade que permite calcular os pontos com qualquer tamanho de tabuleiro e número de peças em linha caso este número seja múltiplo de 3.
+Tentámos empregar boas práticas de prolog durante a realização do código e tentámos respeitar ao máximo a estrutura indicada, tendo sido impossível de implementar alguns predicados da maneira explícita devido à própria lógica de jogo.
+Foram aprofundados diversos conhecimentos relativamente à programação funcional e recursiva, devido aos desafios impostos pelos predicados value e display_game.
+Foi de notar que graças à estrutura imposta, a realização do trabalho tornou-se mais simples e organizada.
+Não foi implementada a funcionalidade de ser possível de realizar input de valores sem necessidade de usar ponto(.).
+Em suma ficámos muito satisfeitos com o aspecto visual do trabalho e com a estrutura de código.
+
+### Bibliografia:
+
+* http://asciivalue.com/
+* https://www.swi-prolog.org/

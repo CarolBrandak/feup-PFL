@@ -25,21 +25,19 @@ random_move(ValidMoves, Move):-
 %smart_move(+Board, +ValidMoves, -Move).
 smart_move(Board, ValidMoves, Move):-
     length(ValidMoves, L),
-    create_score_list(Board, ValidMoves, ScoreList, L),
+    value(Board, ValidMoves, ScoreList),
     max_score_list(ScoreList, [], MaxListIndex, 0, 0, L),
     random_member(X, MaxListIndex),
     nth0(X, ValidMoves, Move),
     nl,write('Bot Move: \n'),write(Move),nl.
 
 
-%create_score_list(+Board, +ValidMoves, -ScoreList,  +N)
-create_score_list(_, [], [], 0).
-create_score_list(Board, [Move|TailMove], [Score|TailScore], N):-
+%value(+Board, +ValidMoves, -ScoreList)
+value(_, [], []).
+value(Board, [Move|TailMove], [Score|TailScore]):-
     future_play(Board, Move, NewBoard),
     score(0, NewBoard, Move, 0, _, Score, _),
-    N > 0,
-    N1 is N-1,
-    create_score_list(Board, TailMove, TailScore, N1).
+    value(Board, TailMove, TailScore).
 
 %max_score_list(+ScoreList, ?MaxListIndexAux, -MaxListIndex, -MaxScore, +N, +L)
 max_score_list(_, MaxListIndex, MaxListIndex, _, L, L).
