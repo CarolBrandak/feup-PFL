@@ -66,6 +66,7 @@ final([
 
 O programa é inciado por play/0, demonstrando em seguida um menu, este pedindo o size do Board e o tipo de jogo: Player vs Player, Player vs Computer, Computer vs Computer. Dependendo do tipo de jogo, pede o nível de jogo do Computador (1 e 2), sendo que no nível 1 o Computador faz jogadas random, e no nível 2 faz jogadas inteligentes.
 
+
 ##### Menu
 
-![Menu](https://github.com/CarolBrandak/feup-PFL/blob/main/TP2/imagens/menu.png)
+![menu](https://user-images.githubusercontent.com/80838413/210232330-f59bbef6-a2f9-4267-94a9-0d42aed4e0bf.png)
