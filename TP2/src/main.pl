@@ -1,10 +1,12 @@
 :- include('menu.pl').
 
-:- include('board.pl').
-
 :- include('move.pl').
 
 :- include('examples.pl').
+
+display_initial_size(Size):-
+    initial_size(Size, Board),nl,
+    display_game(Board).
 
 display_initial:-
     initial(Board),nl,

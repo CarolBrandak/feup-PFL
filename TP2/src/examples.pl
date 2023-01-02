@@ -1,3 +1,8 @@
+:- include('board.pl').
+
+initial_size(Size, Board):-
+    create_board(Board, Size, Size).
+
 initial([
     ['', '', '', '', '', ''],
     ['', '', '', '', '', ''],

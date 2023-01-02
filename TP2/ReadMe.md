@@ -38,7 +38,7 @@ initial([
 ]).
 ```
 
-##### Estado Intremédio
+##### Estado Intermédio
 ```prolog
 mid([
     [1 , '', '', '', '', ''],
@@ -61,3 +61,11 @@ final([
     [1, 1, 1, 1, 1, 1]
 ]).
 ```
+
+#### Visualização do estado de jogo
+
+O programa é inciado por play/0, demonstrando em seguida um menu, este pedindo o size do Board e o tipo de jogo: Player vs Player, Player vs Computer, Computer vs Computer. Dependendo do tipo de jogo, pede o nível de jogo do Computador (1 e 2), sendo que no nível 1 o Computador faz jogadas random, e no nível 2 faz jogadas inteligentes.
+
+##### Menu
+
+![Menu](https://github.com/CarolBrandak/feup-PFL/blob/main/imagens/menu.png)
