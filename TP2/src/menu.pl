@@ -1,5 +1,6 @@
 :- include('exceptions.pl').
 
+% Print do nome do jogo
 game_name:-
     write('\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n'),   
     write('                        333333333333333                66666666      999999999     \n'),
@@ -41,6 +42,7 @@ game_name:-
  333333333333333            666666666       99999999
  */
 
+% Escolha do tamanho do tabuleiro
 %initial_size(-Size)
 initial_size(Size):-
     repeat,
@@ -50,6 +52,7 @@ initial_size(Size):-
     !,
     nl,nl.
 
+% Selecionar o modo do jogo
 %select_mode(-Mode)
 select_mode(Mode):-
     repeat,
@@ -62,6 +65,7 @@ select_mode(Mode):-
     !,
     nl, nl.
 
+% Escolher o nivel do bot
 %choose_ai_level(+Mode, [-Level1, -Level2])
 choose_ai_level(1, [0, 0]).
 choose_ai_level(2, [Level1, 0]):-

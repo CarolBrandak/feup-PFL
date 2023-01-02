@@ -1,8 +1,10 @@
 :- include('board.pl').
 
+% Estado inicial conforme o size
 initial_size(Size, Board):-
     create_board(Board, Size, Size).
 
+% Estado inicial
 initial([
     ['', '', '', '', '', ''],
     ['', '', '', '', '', ''],
@@ -12,6 +14,7 @@ initial([
     ['', '', '', '', '', '']
 ]).
 
+% Estado intremédio
 mid([
     [1 , '', '', '', '', ''],
     ['', '', '', '', '', 1 ],
@@ -21,6 +24,7 @@ mid([
     ['', 1 , '', '', '', '']
 ]).
 
+% Estado final
 final([
     [1, 1, 1, 1, 1, 1],
     [1, 1, 1, 1, 1, 1],

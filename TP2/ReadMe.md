@@ -100,7 +100,7 @@ Foi necessário efetuar as operações deste modo pois pela lógica de jogo, nã
 
 #### Avaliação do Tabuleiro:
 
-É possível verificar quais as jogadas que possuem maior valor através do predicado `value/3`. Esse predicado recebe o Estado de Jogo, a lista de jogadas válidas, e devolve uma lista de scores com índice equivalente ao índice da respetiva jogada. Essa lista é usada no predicado `max_score_list/6`, que retorna uma lista com os índices de maior score. Esta operação foi feita desta forma de modo a esperar um número diferente de jogadas com maior valor, e assim escolher uma dessas jogadas aleatóriamente.
+É possível verificar quais as jogadas que possuem maior valor através do predicado `value/3`. Esse predicado recebe o Estado de Jogo, a lista de jogadas válidas, e devolve uma lista de scores com índice equivalente ao índice da respetiva jogada. Essa lista é usada no predicado `max_score_list/6`, que retorna uma lista com os índices de maior score. Esta operação foi feita desta forma de modo a esperar um número diferente de jogadas com maior valor, e assim escolher uma dessas jogadas aleatóriamente. O score é calculado em cada jogada através do predicado `score/7` que recebe o turno, o estado de jogo, a jogada, os scores atuais dos jogadores e devolve os novos scores. Neste predicado é calculado o número de peças nas linhas horizontal, vertical e diagonais após a jogada e consequentemente o score dessa linha.
 
 #### Jogada do Computador:
 

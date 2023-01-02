@@ -4,22 +4,27 @@
 
 :- include('examples.pl').
 
+% Demonstração do estado inicial conforme o size
 display_initial_size(Size):-
     initial_size(Size, Board),nl,
     display_game(Board).
 
+% Demonstração do estado inicial
 display_initial:-
     initial(Board),nl,
     display_game(Board).
 
+% Demonstração do estado intremédio
 display_mid:-
     mid(Board),nl,
     display_game(Board).
 
+% Demonstração do estado final
 display_final:-
     final(Board),nl,
     display_game(Board).
 
+% Chamada inicial do jogo
 play:-
     game_name,
     initial_size(Size),
@@ -30,6 +35,7 @@ play:-
     game_loop(Board, CPUs, 0, 0, 0, 0), nl,
     write('\nFinished execution\n').
 
+% Ciclo do jogo
 %game_loop(+Board, +CPUs, +Turn, +State, +Score1, +Score2)
 game_loop(_, _, _, 1, Score1, Score2):-
     game_over(Score1, Score2),

@@ -1,3 +1,4 @@
+% Calcula o novo score de um jogador consoante o turno e jogada
 %score(+Turn, +Board, +Move, +Score1, +Score2, -NewScore1, -NewScore2)
 score(0, Board, [RowNumber,ColumnNumber], Score, Score2, NewScore, Score2):-
     length(Board, Size),
@@ -37,6 +38,7 @@ score(1, Board, [RowNumber,ColumnNumber], Score1, Score, Score1, NewScore):-
     calculate_dia2(Board, RowNInv, ColNInv, NSize, 0, NPiecesDia2),
     calc_score(NPiecesDia2, SumScore3, NewScore).
 
+% Calcula o número de peças na linha
 %calculate_row(+Board, +RowNumber, +N, +Size, +NPieces, -NewNPieces)
 calculate_row(Board, RowNumber, N, N, NPieces, NewNPieces):-
     get_element(Board, RowNumber, N, 1),
@@ -54,6 +56,7 @@ calculate_row(Board, RowNumber, N, Size, NPieces, NewNPieces):-
     NewN is N + 1,
     calculate_row(Board, RowNumber, NewN, Size, NPieces, NewNPieces).
 
+% Calcula o número de peças na coluna
 %calculate_column(+Board, +ColNumber, +N, +Size, +NPieces, -NewNPieces)
 calculate_column(Board, ColNumber, N, N, NPieces, NewNPieces):-
     get_element(Board, N, ColNumber, 1),
@@ -71,6 +74,7 @@ calculate_column(Board, ColNumber, N, Size, NPieces, NewNPieces):-
     NewN is N + 1,
     calculate_column(Board, ColNumber, NewN, Size, NPieces, NewNPieces).
 
+% Calcula o número de peças na diagonal normal
 %calculate_dia1(+Board, +RowNumber, +ColNumber, +Size, +NPieces, -NewNPieces)
 calculate_dia1(Board, RowNumber, N, N, NPieces, NewNPieces):-
     get_element(Board, RowNumber, N, 1),
@@ -96,6 +100,7 @@ calculate_dia1(Board, RowNumber, ColNumber, Size, NPieces, NewNPieces):-
     NewCol is ColNumber + 1,
     calculate_dia1(Board, NewRow, NewCol, Size, NPieces, NewNPieces).
 
+% Calcula o número de peças na diagonal inversa
 %calculate_dia2(+Board, +RowNumber, +ColNumber, +Size, +NPieces, -NewNPieces)
 calculate_dia2(Board, RowNumber, 0, _, NPieces, NewNPieces):-
     get_element(Board, RowNumber, 0, 1),
@@ -121,6 +126,7 @@ calculate_dia2(Board, RowNumber, ColNumber, Size, NPieces, NewNPieces):-
     NewCol is ColNumber - 1,
     calculate_dia2(Board, NewRow, NewCol, Size, NPieces, NewNPieces).
 
+% Calcula o score na reta
 %calc_score(+NPieces, +Score, -NewScore)
 calc_score(NPieces, Score, Score):-
     ModPiece is NPieces mod 3,

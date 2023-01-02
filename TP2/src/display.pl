@@ -1,5 +1,6 @@
 :- include('utils.pl').
 
+% Mostra o tabuleiro
 %display_game(+Board)
 display_game(Board):-
   length(Board, N),
@@ -9,6 +10,7 @@ display_game(Board):-
   display_board(Board, NSize),
   display_footer(Board, 0, NSize), nl.
 
+% Mostra as cordenadas da coluna
 %display_xcoords(+Board, +N, +Size)
 display_xcoords(_, N, N):-
   write('       '), write(N), nl.
