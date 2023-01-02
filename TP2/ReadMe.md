@@ -70,3 +70,18 @@ O programa é inciado por play/0, demonstrando em seguida um menu, este pedindo 
 ##### Menu
 
 ![menu](https://user-images.githubusercontent.com/80838413/210232330-f59bbef6-a2f9-4267-94a9-0d42aed4e0bf.png)
+
+##### Estado Inicial
+
+![inicial](https://user-images.githubusercontent.com/80838413/210233516-9422b7ed-a65e-4969-b9c3-b52ae9e6aee6.png)
+
+##### Estado Intermédio
+
+![intermedio](https://user-images.githubusercontent.com/80838413/210233561-45054617-647a-4c04-98a4-6d75fb2291c7.png)
+
+##### Estado Final
+
+![final](https://user-images.githubusercontent.com/80838413/210233611-7d07c1c5-5f5e-4b49-b997-7228f8fb8a05.png)
+
+
+
