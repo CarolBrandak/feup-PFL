@@ -20,7 +20,7 @@ Regras:
 * Se houver 6 peças na mesma linha (ortogonal e diagonal) ganha 2 ponto.
 * Se houver 9 peças na mesma linha (ortogonal e diagonal) ganha 3 ponto.
 
-Adicionámos uma funcionalidade que permite calcurar pontos para qualquer tamanho de tabuleiro, isto é, o jogador recebe n pontos quando faz uma linha com n * 3 peças.
+Adicionámos uma funcionalidade que permite calcular pontos para qualquer tamanho de tabuleiro, isto é, o jogador recebe n pontos quando faz uma linha com n * 3 peças.
 
 ### Lógica do Jogo:
 #### Representação interna do estado do jogo:
