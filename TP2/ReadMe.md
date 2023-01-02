@@ -68,4 +68,4 @@ O programa é inciado por play/0, demonstrando em seguida um menu, este pedindo 
 
 ##### Menu
 
-![Menu](https://github.com/CarolBrandak/feup-PFL/blob/main/imagens/menu.png)
+![Menu](https://github.com/CarolBrandak/feup-PFL/blob/main/TP2/imagens/menu.png)
