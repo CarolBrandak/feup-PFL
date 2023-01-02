@@ -4,6 +4,20 @@
 
 :- include('move.pl').
 
+:- include('examples.pl').
+
+display_initial:-
+    initial(Board),nl,
+    display_game(Board).
+
+display_mid:-
+    mid(Board),nl,
+    display_game(Board).
+
+display_final:-
+    final(Board),nl,
+    display_game(Board).
+
 play:-
     game_name,
     initial_size(Size),
